@@ -1,0 +1,232 @@
+{
+ "kind": "discovery#restDescription",
+ "etag": "\"FWXGb4Q2eZqWRcG8B2Ixrr-vrqQ/k8YM5vUhptbM1iDWsvlJJdG0pCw\"",
+ "discoveryVersion": "v1",
+ "id": "usuarioendpoint:v1",
+ "name": "usuarioendpoint",
+ "version": "v1",
+ "description": "This is an API",
+ "ownerDomain": "jtristan.com",
+ "ownerName": "jtristan.com",
+ "packagePath": "reservarestaurante.entidad",
+ "icons": {
+  "x16": "http://www.google.com/images/icons/product/search-16.gif",
+  "x32": "http://www.google.com/images/icons/product/search-32.gif"
+ },
+ "protocol": "rest",
+ "baseUrl": "https://stoked-sun-469.appspot.com/_ah/api/usuarioendpoint/v1/",
+ "basePath": "/_ah/api/usuarioendpoint/v1/",
+ "rootUrl": "https://stoked-sun-469.appspot.com/_ah/api/",
+ "servicePath": "usuarioendpoint/v1/",
+ "batchPath": "batch",
+ "parameters": {
+  "alt": {
+   "type": "string",
+   "description": "Data format for the response.",
+   "default": "json",
+   "enum": [
+    "json"
+   ],
+   "enumDescriptions": [
+    "Responses with Content-Type of application/json"
+   ],
+   "location": "query"
+  },
+  "fields": {
+   "type": "string",
+   "description": "Selector specifying which fields to include in a partial response.",
+   "location": "query"
+  },
+  "key": {
+   "type": "string",
+   "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+   "location": "query"
+  },
+  "oauth_token": {
+   "type": "string",
+   "description": "OAuth 2.0 token for the current user.",
+   "location": "query"
+  },
+  "prettyPrint": {
+   "type": "boolean",
+   "description": "Returns response with indentations and line breaks.",
+   "default": "true",
+   "location": "query"
+  },
+  "quotaUser": {
+   "type": "string",
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+   "location": "query"
+  },
+  "userIp": {
+   "type": "string",
+   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+   "location": "query"
+  }
+ },
+ "auth": {
+  "oauth2": {
+   "scopes": {
+    "https://www.googleapis.com/auth/userinfo.email": {
+     "description": "View your email address"
+    }
+   }
+  }
+ },
+ "schemas": {
+  "CollectionResponse_Usuario": {
+   "id": "CollectionResponse_Usuario",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "Usuario"
+     }
+    },
+    "nextPageToken": {
+     "type": "string"
+    }
+   }
+  },
+  "User": {
+   "id": "User",
+   "type": "object",
+   "properties": {
+    "authDomain": {
+     "type": "string"
+    },
+    "email": {
+     "type": "string"
+    },
+    "federatedIdentity": {
+     "type": "string"
+    },
+    "nickname": {
+     "type": "string"
+    },
+    "userId": {
+     "type": "string"
+    }
+   }
+  },
+  "Usuario": {
+   "id": "Usuario",
+   "type": "object",
+   "properties": {
+    "apellidos": {
+     "type": "string"
+    },
+    "cuentaGoogle": {
+     "$ref": "User"
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "nombre": {
+     "type": "string"
+    }
+   }
+  }
+ },
+ "methods": {
+  "getUsuario": {
+   "id": "usuarioendpoint.getUsuario",
+   "path": "usuario/{id}",
+   "httpMethod": "GET",
+   "parameters": {
+    "id": {
+     "type": "string",
+     "required": true,
+     "format": "int64",
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "id"
+   ],
+   "response": {
+    "$ref": "Usuario"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "insertUsuario": {
+   "id": "usuarioendpoint.insertUsuario",
+   "path": "usuario",
+   "httpMethod": "POST",
+   "request": {
+    "$ref": "Usuario",
+    "parameterName": "resource"
+   },
+   "response": {
+    "$ref": "Usuario"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "listUsuario": {
+   "id": "usuarioendpoint.listUsuario",
+   "path": "usuario",
+   "httpMethod": "GET",
+   "parameters": {
+    "cursor": {
+     "type": "string",
+     "location": "query"
+    },
+    "limit": {
+     "type": "integer",
+     "format": "int32",
+     "location": "query"
+    },
+    "mail": {
+     "type": "string",
+     "location": "query"
+    }
+   },
+   "response": {
+    "$ref": "CollectionResponse_Usuario"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "removeUsuario": {
+   "id": "usuarioendpoint.removeUsuario",
+   "path": "usuario/{id}",
+   "httpMethod": "DELETE",
+   "parameters": {
+    "id": {
+     "type": "string",
+     "required": true,
+     "format": "int64",
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "id"
+   ],
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "updateUsuario": {
+   "id": "usuarioendpoint.updateUsuario",
+   "path": "usuario",
+   "httpMethod": "PUT",
+   "request": {
+    "$ref": "Usuario",
+    "parameterName": "resource"
+   },
+   "response": {
+    "$ref": "Usuario"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  }
+ }
+}
