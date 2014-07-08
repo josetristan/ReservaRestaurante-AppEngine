@@ -1,6 +1,5 @@
 package com.jtristan.reservarestaurante.entidad;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -25,10 +24,10 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.datanucleus.query.JDOCursorHelper;
 
 @Api(name = "reservaendpoint", namespace = @ApiNamespace(ownerDomain = "jtristan.com", ownerName = "jtristan.com", packagePath = "reservarestaurante.entidad"),
-clientIds={"918919876199-gli6h64sd1vjj2nir1o7s9k4br36f66n.apps.googleusercontent.com",
+clientIds={"-------------------------------.apps.googleusercontent.com",
 com.google.api.server.spi.Constant.API_EXPLORER_CLIENT_ID,
-"918919876199-lfouir6d21adtgrdgbqt9tvg51vhfmev.apps.googleusercontent.com"},
-audiences={"918919876199-lfouir6d21adtgrdgbqt9tvg51vhfmev.apps.googleusercontent.com"})
+"---------------------------.apps.googleusercontent.com"},
+audiences={"-------------------------------.apps.googleusercontent.com"})
 public class ReservaEndpoint {
 	
 	private static final Logger log = Logger.getLogger(ReservaEndpoint.class.getName());
@@ -148,7 +147,7 @@ public class ReservaEndpoint {
 	 * @return The inserted entity.
 	 */
 	@ApiMethod(name = "insertReserva")
-	public Reserva insertReserva(Reserva reserva, User usuarioOAuth) {
+	public Reserva insertReserva(Reserva reserva, User usuarioOAuth) throws Exception{
 		PersistenceManager mgr = getPersistenceManager();
 		try {
 			if (reserva.getId()!=null){
@@ -188,9 +187,7 @@ public class ReservaEndpoint {
 			
 		}catch(Exception e){
 			System.out.println(e.getMessage());
-			
-			
-			
+			throw new Exception(e.getMessage());								
 		} finally {
 			mgr.close();
 		}
